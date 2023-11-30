@@ -1,3 +1,5 @@
+import { TodoType } from "../types/types";
+
 const HTTPClient = () => {
   const myHeaders = new Headers();
   myHeaders.append("content-type", "application/json");
@@ -12,8 +14,6 @@ const HTTPClient = () => {
 
     const data = await response.json();
 
-    console.log(data);
-
     return data;
   }
 
@@ -23,21 +23,31 @@ const HTTPClient = () => {
     });
   };
 
-  // const POST = async (endpoint: string, value: UserType | PeopleType) => {
-  //   return await fetchJSON(endpoint, {
-  //     method: "post",
-  //     body: JSON.stringify({ ...value }),
-  //   });
-  // };
+  const POST = async (endpoint: string, value: string) => {
+    return await fetchJSON(endpoint, {
+      method: "post",
+      body: JSON.stringify({
+        userId: 11,
+        title: value,
+        completed: false,
+      }),
+    });
+  };
 
-  // const PUT = async (endpoint: string, value: PeopleType) => {
-  //   return await fetchJSON(endpoint, {
-  //     method: "put",
-  //     body: JSON.stringify({ ...value }),
-  //   });
-  // };
+  const PUT = async (endpoint: string, value: TodoType) => {
+    return await fetchJSON(endpoint, {
+      method: "put",
+      body: JSON.stringify({ ...value }),
+    });
+  };
 
-  return { GET };
+  const DELETE = async (endpoint: string) => {
+    return await fetchJSON(endpoint, {
+      method: "delete",
+    });
+  };
+
+  return { GET, POST, PUT, DELETE };
 };
 
 export default HTTPClient;

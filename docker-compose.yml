@@ -1,0 +1,10 @@
+version: '24.0.6'
+
+services:
+  app: 
+    container_name: test-react-container
+    image: docker-react-image
+    build: 
+      context: .
+    ports:
+      - 4000:80
