@@ -13,6 +13,7 @@ const TodoList = () => {
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
 
+  //the number of tokens that will be displayed on the page
   const itemsPerPage = 10;
 
   useEffect(() => {

@@ -11,10 +11,12 @@ const TodoForm = ({ prevValue, changeItem, completed }: PropsType) => {
   const [inputValue, setInputValue] = useState(prevValue);
   const [isDone, setIsDone] = useState(completed);
 
+  // Function to handle value change
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
     return setInputValue(e.currentTarget.value);
   };
 
+  // Function to handle submit a new todo or changes to an existing one
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
     changeItem(inputValue, isDone);
